@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ItemSlot : MonoBehaviour, IDropHandler
+public class ItemSlot : MonoBehaviour
 {
-    void OnDrop(PointerEventData eventData)
-    {
-        Debug.Log("on drop");
-    }
+
 }
