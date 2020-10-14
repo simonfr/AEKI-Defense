@@ -17,12 +17,16 @@ public class PlayGame : MonoBehaviour
         
     }
 
-    public void ChangeSceneGame(string sceneName){
+    public void NewGame(string sceneName){
         Debug.Log("Changement de scene de " + SceneManager.GetActiveScene().name + " à " + sceneName);
         if(SaveSystem.LoadPlayer()==null){
             SaveSystem.SavePlayer(new Player());
             Debug.Log("Enregistrement du jeu");
         }
-        SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+    }
+    public void ChangeSceneGame(string sceneName){
+        Debug.Log("Changement de scene de " + SceneManager.GetActiveScene().name + " à " + sceneName);
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
     }
 }
