@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Drag : MonoBehaviour
 {
@@ -30,12 +28,14 @@ public class Drag : MonoBehaviour
 
         GameObject nearestObject = searchNearestCase();
 
-        Vector3 directionToTarget = nearestObject.transform.position - this.transform.position;
-        float dSqrToTarget = directionToTarget.sqrMagnitude;
-
-        if(dSqrToTarget <= 10f)
+        if (nearestObject != null)
         {
-            this.transform.position = nearestObject.transform.position;
+            float distanceToTarget = Distance(nearestObject.transform, transform);
+            
+            if(distanceToTarget <= 1f)
+            {
+                transform.position = nearestObject.transform.position;
+            }
         }
     }
 
@@ -59,17 +59,21 @@ public class Drag : MonoBehaviour
 
         foreach(Transform potentialTarget in cases.transform)
         {
-            Vector3 directionToTarget = potentialTarget.position - this.transform.position;
-            float dSqrToTarget = directionToTarget.sqrMagnitude;
+            float distanceToTarget = Distance(potentialTarget, transform);
 
-            if(dSqrToTarget < closestDistanceSqr)
+            if(distanceToTarget < closestDistanceSqr)
             {
-                closestDistanceSqr = dSqrToTarget;
+                closestDistanceSqr = distanceToTarget;
                 bestTarget = potentialTarget;
             }
         }
 
-        return bestTarget.gameObject;
+        return bestTarget == null ? null : bestTarget.gameObject;
     }
 
+    static float Distance(Transform target, Transform current)
+    {
+        return Vector2.Distance(target.position, current.position);
+    }
+    
 }
