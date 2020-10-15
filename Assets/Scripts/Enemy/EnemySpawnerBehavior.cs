@@ -5,17 +5,16 @@ using UnityEngine;
 public class EnemySpawnerBehavior : MonoBehaviour
 {
     [SerializeField] private GameObject enemy;
-    [SerializeField] private int enemy_count = 0;
     [SerializeField] private float enemy_interval = 0f;
     [SerializeField] private DirectionEnum start_direction = DirectionEnum.RIGHT;
     [SerializeField] private GameObject spawnButton;
 
     private List<GameObject> enemys = new List<GameObject>();
     private float current_interval;
-    private int enemyLeftToSpawn;
+    private int enemyLeftToSpawn = 0;
+    private List<int> wavesNb = new List<int>();
 
     void Start(){
-        enemyLeftToSpawn = enemy_count;
     }
 
     // Update is called once per frame
@@ -33,8 +32,19 @@ public class EnemySpawnerBehavior : MonoBehaviour
         }
     }
 
-    public void launchWave(int enemyToSpawn){
-        ResetCountEnemy(enemyToSpawn);
+    public void launchWave(){
+        ResetCountEnemy(wavesNb[0]);
+        wavesNb.RemoveAt(0);
+    }
+
+    public void launchWaves(string waves)
+    {
+        string[] split = waves.Split(","[0]);
+        foreach (string waveNb in split)
+        {
+            wavesNb.Add(int.Parse(waveNb));
+        }
+        launchWave();
     }
 
     private void ResetCountEnemy(int enemyToSpawn){
