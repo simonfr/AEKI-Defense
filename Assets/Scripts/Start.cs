@@ -16,7 +16,8 @@ public class Start : MonoBehaviour
     }
 
     bool isAvailable() {
-        return this.transform.parent.GetComponent<Dashboard>().startButtonAvailable;
+        return true;
+        //return this.transform.parent.GetComponent<Dashboard>().startButtonAvailable;
     }
 
     public void OnMouseDown()

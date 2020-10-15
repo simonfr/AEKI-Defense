@@ -794,7 +794,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3378670261148763462, guid: e17d8115f8bda744295ee2d72a50d221, type: 3}
       propertyPath: enemy_interval
-      value: 0.1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3378670261148763462, guid: e17d8115f8bda744295ee2d72a50d221, type: 3}
       propertyPath: m_Enabled

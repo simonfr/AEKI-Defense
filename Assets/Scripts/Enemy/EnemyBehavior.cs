@@ -5,7 +5,8 @@ using UnityEngine;
 public class EnemyBehavior : MonoBehaviour
 {
     [SerializeField] private float speed = 0f;
-
+    [SerializeField] private int sante = 100;
+    
     private Vector3 direction; 
 
     // Update is called once per frame

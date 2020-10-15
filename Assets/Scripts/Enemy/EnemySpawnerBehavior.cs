@@ -8,28 +8,44 @@ public class EnemySpawnerBehavior : MonoBehaviour
     [SerializeField] private int enemy_count = 0;
     [SerializeField] private float enemy_interval = 0f;
     [SerializeField] private DirectionEnum start_direction = DirectionEnum.RIGHT;
+    [SerializeField] private GameObject spawnButton;
 
-    private int current_count;
+    private List<GameObject> enemys = new List<GameObject>();
     private float current_interval;
+    private int enemyLeftToSpawn;
+
+    void Start(){
+        enemyLeftToSpawn = enemy_count;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if(current_count == enemy_count)
-            gameObject.SetActive(false); //TOMODIFY : à modifier pour le système de vagues
-        
         current_interval += Time.deltaTime;
 
-        if(current_interval >= enemy_interval){
+        if(current_interval >= enemy_interval && enemyLeftToSpawn != 0){
             SpawnEnemy();
-            ++current_count;
             current_interval = current_interval - enemy_interval;
+            spawnButton.SetActive(false);
+        } else if (enemyLeftToSpawn == 0 && GameObject.Find("Termite(Clone)") == null) {
+           spawnButton.SetActive(true);
+           current_interval = 0;
         }
+    }
+
+    public void launchWave(int enemyToSpawn){
+        ResetCountEnemy(enemyToSpawn);
+    }
+
+    private void ResetCountEnemy(int enemyToSpawn){
+        enemyLeftToSpawn = enemyToSpawn;
     }
 
     private void SpawnEnemy(){
         GameObject obj = GameObject.Instantiate(enemy);
+        enemys.Add(obj);
         obj.transform.position = transform.position;
         obj.GetComponent<EnemyBehavior>().ChangeDirection(start_direction);
+        --enemyLeftToSpawn;
     }
 }
