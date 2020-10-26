@@ -6,7 +6,7 @@ public class TowerBehavior : MonoBehaviour
 {
     [SerializeField] private float range;
     [SerializeField] private Transform turret;
-    private Transform target;
+    private Collider2D target;
     //CONSTANTE
     [SerializeField]  private float TURRENT_ROTATION_SPEED;
     // Start is called before the first frame update
@@ -20,27 +20,20 @@ public class TowerBehavior : MonoBehaviour
     }
 
     private void GetEnemyInRange(){
-        Collider2D enemy = Physics2D.OverlapCircle(transform.position, range);
-
-        if(enemy!=target){
-            if(target!=null) {
-                target.GetComponent<SpriteRenderer>().color = Color.magenta;
-            }
-        }
-        target = enemy == null ? null : enemy.transform;
-        if(target!=null)
-            target.GetComponent<SpriteRenderer>().color=Color.cyan;
-        else
-            ResetTurretRotation();
-        
+        target = Physics2D.OverlapCircle(transform.position, range);
+        if(target==null)
+            ResetTurretRotation();       
     }
 
     private void ResetTurretRotation(){
-        turret.rotation = Quaternion.Slerp(turret.rotation, Quaternion.identity, 2f);
+        if (turret.rotation.z>0.02f)
+            turret.rotation = Quaternion.Slerp(turret.rotation, Quaternion.identity, 2f * Time.deltaTime);
+        else 
+            turret.rotation = Quaternion.Slerp(turret.rotation, Quaternion.identity, 2f);
     }
 
     private void FollowTarget(){
-        Vector3 dir = target.position - transform.position;
+        Vector3 dir = target.transform.position - transform.position;
         Debug.DrawRay(transform.position, dir, Color.red);
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         turret.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
@@ -53,7 +46,7 @@ public class TowerBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(target == null || !IsInRange(target)){
+        if(target == null || !IsInRange(target.transform)){
             GetEnemyInRange();
         }
         
