@@ -30,4 +30,11 @@ public class EnemyBehavior : MonoBehaviour
                 break;
         }    
     }
+
+        void OnTriggerEnter2D(Collider2D col){
+        if(col.gameObject.tag != "Projectile"){
+            return;
+        } 
+        GameObject.Destroy(col.gameObject);
+    }
 }
