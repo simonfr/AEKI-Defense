@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class EnemySpawnerBehavior : MonoBehaviour
 {
-    [SerializeField] private GameObject enemy;
+    [SerializeField] private Enemy enemy;
+    [SerializeField] private EnemyBehavior enemy_template;
     [SerializeField] private int enemy_count = 0;
     [SerializeField] private float enemy_interval = 0f;
     [SerializeField] private DirectionEnum start_direction = DirectionEnum.RIGHT;
@@ -28,8 +29,10 @@ public class EnemySpawnerBehavior : MonoBehaviour
     }
 
     private void SpawnEnemy(){
-        GameObject obj = GameObject.Instantiate(enemy);
+        GameObject obj = GameObject.Instantiate(enemy_template.gameObject);
         obj.transform.position = transform.position;
-        obj.GetComponent<EnemyBehavior>().ChangeDirection(start_direction);
+        EnemyBehavior behavior = obj.GetComponent<EnemyBehavior>();
+        behavior.Init(enemy);
+        behavior.ChangeDirection(start_direction);
     }
 }

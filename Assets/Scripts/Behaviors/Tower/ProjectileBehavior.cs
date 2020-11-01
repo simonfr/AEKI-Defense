@@ -5,7 +5,8 @@ using UnityEngine;
 public class ProjectileBehavior : MonoBehaviour
 {
     private Transform target;
-    private float speed = 5f;
+    private Vector3 dead_target;
+    private float speed = 10f;
 
     public void Init(Transform target){
         this.target = target;
@@ -15,7 +16,8 @@ public class ProjectileBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = transform.position + (target.position - transform.position) * Time.deltaTime * speed;
+        transform.position = transform.position + 
+        ((target==null ? dead_target : target.position)- transform.position) * Time.deltaTime * speed;
     }
 
     void OnColliderEnter2D(Collider2D col){

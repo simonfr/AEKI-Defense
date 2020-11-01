@@ -54,7 +54,8 @@ public class TowerBehavior : MonoBehaviour
     private void Fire(){
         current_time = current_time - attack_speed;
         ProjectileBehavior bullet = GameObject.Instantiate(projectile);
-        bullet.transform.position = turret.position;
+        //bullet.transform.position = turret.position;
+        bullet.transform.position = new Vector3(turret.position.x, turret.position.y, -0.1f);
         bullet.Init(target.transform);
     }
 

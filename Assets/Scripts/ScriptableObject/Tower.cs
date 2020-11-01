@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Tower : MonoBehaviour
-{
+[CreateAssetMenu]
+public class Tower : ScriptableObject {
+    
     public bool placed;
 
 }
