@@ -16,13 +16,18 @@ public class ProjectileBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (target != null){
+            dead_target = target.position;
+        }
+
         transform.position = transform.position + 
         ((target==null ? dead_target : target.position)- transform.position) * Time.deltaTime * speed;
     }
 
     void OnColliderEnter2D(Collider2D col){
-        if(col.gameObject.tag != "Enemy"){
+        if(col.gameObject.tag != "Projectile"){
             return;
         } 
+        GameObject.Destroy(col.gameObject);
     }
 }

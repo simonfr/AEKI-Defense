@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4575ad9a85890040c93b283d949064aa, type: 3}
-  m_Name: Wave1
+  m_Name: Termite
   m_EditorClassIdentifier: 
   life: 50
   sprite: {fileID: 21300000, guid: 9ff4fc391382ab54ba6bbdf09b69d9cd, type: 3}
   color: {r: 0, g: 0, b: 0, a: 1}
   size: 1
-  move_speed: 1
+  move_speed: 5
   gold: 1
   value: 1

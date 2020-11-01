@@ -721,6 +721,10 @@ PrefabInstance:
       value: EnemySpawner
       objectReference: {fileID: 0}
     - target: {fileID: 3378670261148763462, guid: e17d8115f8bda744295ee2d72a50d221, type: 3}
+      propertyPath: waves.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3378670261148763462, guid: e17d8115f8bda744295ee2d72a50d221, type: 3}
       propertyPath: enemy_count
       value: 2
       objectReference: {fileID: 0}
@@ -740,6 +744,10 @@ PrefabInstance:
       propertyPath: enemy_template
       value: 
       objectReference: {fileID: 4815316330412085475, guid: 02ccbd4ce15122a4784e854ab202c4fa, type: 3}
+    - target: {fileID: 3378670261148763462, guid: e17d8115f8bda744295ee2d72a50d221, type: 3}
+      propertyPath: waves.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 58b582b737ab46abdbc4f8ea02b25c68, type: 2}
     - target: {fileID: 3378670261148763463, guid: e17d8115f8bda744295ee2d72a50d221, type: 3}
       propertyPath: m_LocalPosition.x
       value: -498
