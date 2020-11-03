@@ -64,10 +64,16 @@ public class PlayerBehavior : MonoBehaviour
     {
         if(selected_tower!=null) {
             Vector3 mouse = GameObject.FindObjectOfType<Camera>().ScreenToWorldPoint(Input.mousePosition);
-			selected_tower.transform.position = new Vector3(mouse.x, mouse.y, 0f);
+			selected_tower.transform.position = new Vector3(mouse.x, mouse.y, 11f);
 
 			if (Input.GetMouseButtonDown(0)) {
-
+				if (gold >= selected_tower.cost) {
+					RemoveGold(selected_tower.cost);
+					selected_tower.Place();
+					selected_tower = null;
+				} else {
+					// TODO: DISPLAY "NOT ENOUGH MONEY"
+				}
 			}
 			if (Input.GetMouseButtonDown(1)) {
 				GameObject.Destroy(selected_tower.gameObject);

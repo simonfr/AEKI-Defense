@@ -8,10 +8,13 @@ public class TowerBehavior : MonoBehaviour
     private float range;
     private float attack_speed;
     private float ready_time;
-    [NonSerialized] private int cost;
+
+
+    [NonSerialized] public int cost;
     [SerializeField] private GameObject tower_base;
     [SerializeField] private GameObject tower_turret;
     [SerializeField] private GameObject tower_range;
+	private BoxCollider2D mouse_collider;
 
     private Projectile projectile;
     private ProjectileBehavior projectile_template;
@@ -32,7 +35,8 @@ public class TowerBehavior : MonoBehaviour
     }
 
     public void Init(Tower tower, bool placing = false){
-        
+        mouse_collider = GetComponent<BoxCollider2D>();
+
         damage = tower.damage;
         range = tower.range;
         attack_speed = tower.attack_speed;
@@ -50,7 +54,7 @@ public class TowerBehavior : MonoBehaviour
         projectile = tower.projectile;
         projectile_template = tower.projectile_template;
 
-        tower_range.transform.localScale = new Vector3(tower.range+1, tower.range+1, 10f);
+        tower_range.transform.localScale = new Vector3(tower.range+1, tower.range+1, 0f);
         tower_range.SetActive(placing);
 
     }
@@ -93,8 +97,7 @@ public class TowerBehavior : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
+	void Update () {
 		if (!placing) {
 			if (target == null || !IsInRange(target.transform))
 				GetEnemyInRange();
@@ -110,7 +113,7 @@ public class TowerBehavior : MonoBehaviour
 			}
 
 			if (Input.GetMouseButtonDown(0)) {
-				if (!selected) {
+				if (!selected && IsMouseIn()) {
 					selected = true;
 					tower_range.SetActive(true);
 				} else if (selected) {
@@ -119,7 +122,12 @@ public class TowerBehavior : MonoBehaviour
 				}
 			}
 		}
-    }
+	}
+
+	private bool IsMouseIn() {
+		Vector3 mouse = GameObject.FindObjectOfType<Camera>().ScreenToWorldPoint(Input.mousePosition);
+		return mouse_collider.bounds.Contains(new Vector3(mouse.x, mouse.y, 0f));
+	}
 
 	public void Place() {
 		placing = false;

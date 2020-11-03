@@ -27,13 +27,9 @@ public class TowerButtonBehavior : MonoBehaviour{
 
     void Update()
     {
-        if(mouse_in){
-            infos.gameObject.SetActive(true);
-            Vector3 mouse = GameObject.FindObjectOfType<Camera>().ScreenToWorldPoint(Input.mousePosition);
-            select_tower.transform.position = new Vector3(mouse.x, mouse.y, 0f);
-        }else{
-            infos.gameObject.SetActive(false);
-        }
+		if (mouse_in) {
+			infos.transform.position = Input.mousePosition;
+		}
     }
     
     void OnClick(){
