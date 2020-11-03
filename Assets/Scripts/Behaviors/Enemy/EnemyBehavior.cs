@@ -51,10 +51,13 @@ public class EnemyBehavior : MonoBehaviour
         }    
     }
 
-        void OnTriggerEnter2D(Collider2D col){
+    void OnTriggerEnter2D(Collider2D col){
         if(col.gameObject.tag != "Projectile"){
             return;
         } 
-        GameObject.Destroy(col.gameObject);
+        ProjectileBehavior projectile = col.GetComponent<ProjectileBehavior>();
+        current_life -= projectile.damage;
+        if (current_life<=0)
+            GameObject.Destroy(col.gameObject);
     }
 }
