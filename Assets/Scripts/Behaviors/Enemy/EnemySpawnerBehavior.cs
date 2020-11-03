@@ -44,9 +44,8 @@ public class EnemySpawnerBehavior : MonoBehaviour
                 current_count=0;
                 current_interval=0;
                 updateWaveText();
-            }
+            } 
         }
-
     }
 
     private void SpawnEnemy(){

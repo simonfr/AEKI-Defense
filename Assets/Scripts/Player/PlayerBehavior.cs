@@ -63,7 +63,16 @@ public class PlayerBehavior : MonoBehaviour
     void Update()
     {
         if(selected_tower!=null) {
-            selected_tower.transform.position = Input.mousePosition;
+            Vector3 mouse = GameObject.FindObjectOfType<Camera>().ScreenToWorldPoint(Input.mousePosition);
+			selected_tower.transform.position = new Vector3(mouse.x, mouse.y, 0f);
+
+			if (Input.GetMouseButtonDown(0)) {
+
+			}
+			if (Input.GetMouseButtonDown(1)) {
+				GameObject.Destroy(selected_tower.gameObject);
+				selected_tower = null;
+			}        
         }
     }
 

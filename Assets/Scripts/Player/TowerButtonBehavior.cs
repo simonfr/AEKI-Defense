@@ -46,6 +46,12 @@ public class TowerButtonBehavior : MonoBehaviour{
 
     public void OnPointerEnter(){
         mouse_in=true;
+
+        GameObject.Find("TowerNameText").GetComponent<Text>().text = "";
+		GameObject.Find("costText").GetComponent<Text>().text = "Cost: " + tower.cost;
+		GameObject.Find("damageText").GetComponent<Text>().text = "Damage: " + tower.damage;
+		GameObject.Find("attackSpeedText").GetComponent<Text>().text = "Attack Speed: " + tower.attack_speed;
+		GameObject.Find("descriptionText").GetComponent<Text>().text = "Info: \n";
     }
 
     public void OnPointerExit(){

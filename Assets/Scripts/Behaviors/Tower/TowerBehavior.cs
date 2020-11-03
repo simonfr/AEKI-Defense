@@ -77,7 +77,8 @@ public class TowerBehavior : MonoBehaviour
         Vector3 dir = target.transform.position - transform.position;
         Debug.DrawRay(transform.position, dir, Color.red);
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        tower_turret.transform.rotation = Quaternion.Lerp(tower_turret.transform.rotation, Quaternion.AngleAxis(angle, Vector3.forward), 0.1f);
+        tower_turret.transform.rotation = Quaternion.Lerp(tower_turret.transform.rotation, 
+        Quaternion.AngleAxis(angle, Vector3.forward), 0.1f);
     }
 
     private bool IsInRange(Transform point){
@@ -87,29 +88,42 @@ public class TowerBehavior : MonoBehaviour
     private void Fire(){
         current_time = current_time - attack_speed;
         ProjectileBehavior bullet = GameObject.Instantiate(projectile_template);
-        //bullet.transform.position = tower_turret.transform.position;
-        bullet.transform.position = new Vector3(tower_turret.transform.position.x, tower_turret.transform.position.y, -0.1f);
+		bullet.transform.position = tower_turret.transform.position;
         bullet.Init(projectile, target.transform, damage);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!placing){
-            if(target == null || !IsInRange(target.transform))
-                GetEnemyInRange();
+		if (!placing) {
+			if (target == null || !IsInRange(target.transform))
+				GetEnemyInRange();
 
-            current_time += Time.deltaTime;
-            
-            if(target != null){
-                FollowTarget();
-                if(current_time>=attack_speed)
-                    Fire();
-            }else if (current_time>=attack_speed)
-                current_time=attack_speed-ready_time;
-        }
-        if(placing || selected){
+			current_time += Time.deltaTime;
 
-        }
+			if (target != null) {
+				FollowTarget();
+				if (current_time >= attack_speed)
+					Fire();
+			} else if (current_time >= attack_speed) {
+				current_time = attack_speed - ready_time;
+			}
+
+			if (Input.GetMouseButtonDown(0)) {
+				if (!selected) {
+					selected = true;
+					tower_range.SetActive(true);
+				} else if (selected) {
+					selected = false;
+					tower_range.SetActive(false);
+				}
+			}
+		}
     }
+
+	public void Place() {
+		placing = false;
+		selected = false;
+		tower_range.SetActive(false);
+	}
 }
