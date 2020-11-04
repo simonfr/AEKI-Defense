@@ -8,13 +8,18 @@ public class EnemySpawnerBehavior : MonoBehaviour
     [SerializeField] private Waves[] waves;
     [SerializeField] private DirectionEnum start_direction = DirectionEnum.RIGHT;
     [SerializeField] private Text waves_text;
+    [SerializeField] public Button start;
 
     private int current_waves;
     private int current_count;
     private float current_interval;
     private bool active;
+    private bool startWave = false;
+
 
     void Start() {
+		start.onClick.AddListener(setStartWave);
+
         current_waves = 0;
         current_count=0;
         current_interval=0;
@@ -25,27 +30,30 @@ public class EnemySpawnerBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (active){
-            if(current_count > waves.Length || current_count==waves[current_waves].enemy_count){
-                active=false;
-            }
-            current_interval += Time.deltaTime;
+        if(startWave)
+            if (active){
+                if(current_count > waves.Length || current_count==waves[current_waves].enemy_count){
+                    active=false;
+                }
+                current_interval += Time.deltaTime;
 
-            if(current_interval >= waves[current_waves].enemy_interval){
-                SpawnEnemy();
-                ++current_count;
-                current_interval = current_interval - waves[current_waves].enemy_interval;
+                if(current_interval >= waves[current_waves].enemy_interval){
+                    SpawnEnemy();
+                    ++current_count;
+                    current_interval = current_interval - waves[current_waves].enemy_interval;
+                }
+            }else{
+                GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+                if(enemies.Length == 0 && current_waves < waves.Length){
+                    current_waves+=1;
+                    active = true;
+                    startWave=false;
+                    start.gameObject.SetActive(!startWave);
+                    current_count=0;
+                    current_interval=0;
+                    updateWaveText();
+                } 
             }
-        }else{
-            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-            if(enemies.Length == 0 && current_waves < waves.Length){
-                current_waves+=1;
-                active = true;
-                current_count=0;
-                current_interval=0;
-                updateWaveText();
-            } 
-        }
     }
 
     private void SpawnEnemy(){
@@ -58,5 +66,10 @@ public class EnemySpawnerBehavior : MonoBehaviour
 
     private void updateWaveText(){
         waves_text.text = "Wave: " + (current_waves+1);
+    }
+
+    void setStartWave(){
+        startWave=true;
+        start.gameObject.SetActive(!startWave);
     }
 }

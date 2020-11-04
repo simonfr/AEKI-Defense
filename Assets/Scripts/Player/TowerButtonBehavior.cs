@@ -22,13 +22,14 @@ public class TowerButtonBehavior : MonoBehaviour{
         infos.gameObject.SetActive(false);
 
         button.onClick.AddListener(OnClick);
-        
+        GameObject.Find("towerName").GetComponent<Text>().text = "" + tower.name;
     }
 
     void Update()
     {
 		if (mouse_in) {
-			infos.transform.position = Input.mousePosition;
+			Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            infos.transform.position = new Vector3(mousePosition.x, mousePosition.y, 0f);
 		}
     }
     
@@ -41,9 +42,9 @@ public class TowerButtonBehavior : MonoBehaviour{
     }
 
     public void OnPointerEnter(){
+        infos.gameObject.SetActive(true);
         mouse_in=true;
-
-        GameObject.Find("TowerNameText").GetComponent<Text>().text = "";
+        GameObject.Find("TowerNameText").GetComponent<Text>().text = "" + tower.name;
 		GameObject.Find("costText").GetComponent<Text>().text = "Cost: " + tower.cost;
 		GameObject.Find("damageText").GetComponent<Text>().text = "Damage: " + tower.damage;
 		GameObject.Find("attackSpeedText").GetComponent<Text>().text = "Attack Speed: " + tower.attack_speed;
@@ -52,6 +53,7 @@ public class TowerButtonBehavior : MonoBehaviour{
 
     public void OnPointerExit(){
         mouse_in=false;
+        infos.gameObject.SetActive(true);
     }
 
 
