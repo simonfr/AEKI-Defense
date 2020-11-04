@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62fe2eb84975597d3afd9ab6808b3b42, type: 3}
   m_Name: BaseProjectile
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 10
   sprite: {fileID: 21300000, guid: 1c2bf56f98c667417a9c0870989df2b9, type: 3}
   color: {r: 0.78431374, g: 0.047058824, b: 0, a: 1}
-  size: 2
+  size: 0.2
