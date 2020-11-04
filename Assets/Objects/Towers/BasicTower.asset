@@ -18,10 +18,10 @@ MonoBehaviour:
   attack_speed: 1
   ready_time: 0
   cost: 1
-  base_sprite: {fileID: 21300000, guid: a5afbf093fcb8231a8cfbf4f68eeabc6, type: 3}
-  base_color: {r: 0.2784314, g: 0.2784314, b: 0.2784314, a: 0.99607843}
-  turret_sprite: {fileID: 21300000, guid: c1dd0b6044f5f9559aa80b1f400a8dc1, type: 3}
-  turret_color: {r: 0, g: 0.63529414, b: 0.9098039, a: 1}
+  base_color: {r: 1, g: 1, b: 1, a: 0.99215686}
+  turret_sprite: {fileID: 21300000, guid: d13a543b9be305245a075107385fe99d, type: 3}
+  base_sprite: {fileID: 21300000, guid: 408ffae450cda41a9872cfc16fc37420, type: 3}
+  turret_color: {r: 1, g: 1, b: 1, a: 0.6039216}
   projectile: {fileID: 11400000, guid: fad905e9030bbd2d08677f9c8ff9fdb9, type: 2}
   projectile_template: {fileID: 4607051192518612407, guid: 505dbcae047ce1799b874b45016ed130, type: 3}
   freeze_rotation: 0

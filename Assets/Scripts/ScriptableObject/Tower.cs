@@ -11,10 +11,11 @@ public class Tower : ScriptableObject {
     public float ready_time;
     public int cost;
 
-    public Sprite base_sprite;
     public Color base_color;
 
     public Sprite turret_sprite;
+    public Sprite base_sprite;
+
     public Color turret_color;
 
     public Projectile projectile;
