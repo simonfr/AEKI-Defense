@@ -22,7 +22,7 @@ public class TowerButtonBehavior : MonoBehaviour{
         infos.gameObject.SetActive(false);
 
         button.onClick.AddListener(OnClick);
-        GameObject.Find("towerName").GetComponent<Text>().text = "" + tower.name;
+        GameObject.Find("TitleButton1").GetComponent<Text>().text = "" + tower.name;
     }
 
     void Update()

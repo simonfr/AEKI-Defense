@@ -37,6 +37,8 @@ public class ProjectileBehavior : MonoBehaviour
             }
             transform.position = transform.position + 
             ((target==null ? dead_target : target.position)- transform.position) * Time.deltaTime * speed;
+
+            transform.position= new Vector3(transform.position.x, transform.position.y, 10f);
         }
     }
 
