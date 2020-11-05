@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4575ad9a85890040c93b283d949064aa, type: 3}
   m_Name: Termite
   m_EditorClassIdentifier: 
-  life: 50
+  life: 3
   sprite: {fileID: 21300000, guid: 9ff4fc391382ab54ba6bbdf09b69d9cd, type: 3}
   color: {r: 0, g: 0, b: 0, a: 1}
   size: 1

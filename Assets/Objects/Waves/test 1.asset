@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a96c274654b7333b28fdd30fa72bd0d1, type: 3}
   m_Name: test 1
   m_EditorClassIdentifier: 
-  enemy: {fileID: 11400000, guid: b79dfe14b31d286e5bb610af778d3f2f, type: 2}
-  enemy_template: {fileID: 4815316330412085475, guid: 02ccbd4ce15122a4784e854ab202c4fa, type: 3}
-  enemy_count: 3
-  enemy_interval: 1
+  enemies:
+  - {fileID: 11400000, guid: 27012ccdad827a554ac8f9356bc0c1c6, type: 2}
+  - {fileID: 11400000, guid: 86db7a86d41da86fb8f8727f4c21505f, type: 2}

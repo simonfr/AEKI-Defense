@@ -9,10 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 044f98956278edf0c9e8cf95b4d2e0ce, type: 3}
-  m_Name: BedEnemy
+  m_Script: {fileID: 11500000, guid: 4575ad9a85890040c93b283d949064aa, type: 3}
+  m_Name: Spider
   m_EditorClassIdentifier: 
-  enemy: {fileID: 0}
-  enemy_template: {fileID: 0}
-  enemy_count: 0
-  enemy_interval: 0
+  life: 2
+  sprite: {fileID: 21300000, guid: 32ccbb3afbf5bf5f9a098a88e3a0f856, type: 3}
+  color: {r: 1, g: 1, b: 1, a: 1}
+  size: 0.4
+  move_speed: 1
+  gold: 1
+  value: 3

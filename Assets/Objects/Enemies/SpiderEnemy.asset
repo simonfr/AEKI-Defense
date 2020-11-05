@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 044f98956278edf0c9e8cf95b4d2e0ce, type: 3}
-  m_Name: BasicEnemy
+  m_Name: SpiderEnemy
   m_EditorClassIdentifier: 
-  enemy: {fileID: 11400000, guid: b79dfe14b31d286e5bb610af778d3f2f, type: 2}
+  enemy: {fileID: 11400000, guid: 47236561bd98d9ad3b9a71356964b797, type: 2}
   enemy_template: {fileID: 4815316330412085475, guid: 02ccbd4ce15122a4784e854ab202c4fa, type: 3}
-  enemy_count: 1
+  enemy_count: 3
   enemy_interval: 1
