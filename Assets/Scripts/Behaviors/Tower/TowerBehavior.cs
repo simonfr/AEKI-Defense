@@ -54,7 +54,7 @@ public class TowerBehavior : MonoBehaviour
         projectile = tower.projectile;
         projectile_template = tower.projectile_template;
 
-        tower_range.transform.localScale = new Vector3(tower.range+1, tower.range+1, 0f);
+        tower_range.transform.localScale = new Vector3(tower.range*4, tower.range*4, 0f);
         tower_range.SetActive(placing);
 
     }

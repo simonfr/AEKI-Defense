@@ -13,6 +13,9 @@ public class EnemyBehavior : MonoBehaviour
 
     [NonSerialized] public int value; 
 
+    [SerializeField] private Transform life_bar;
+
+
     public void Init(Enemy enemy){
         transform.localScale = new Vector3(enemy.size, enemy.size, 1f);
 
@@ -52,12 +55,31 @@ public class EnemyBehavior : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D col){
-        if(col.gameObject.tag != "Projectile"){
-            return;
-        } 
-        ProjectileBehavior projectile = col.GetComponent<ProjectileBehavior>();
-        current_life -= projectile.damage;
-        if (current_life<=0)
-            GameObject.Destroy(col.gameObject);
+        Debug.Log(col.gameObject.tag);
+        if (col.gameObject.tag != "Projectile")
+			return;
+
+		ProjectileBehavior projectile = col.GetComponent<ProjectileBehavior>();
+		Damage(projectile.damage);
+		GameObject.Destroy(col.gameObject);
+
+
+		if (IsDead()) {
+			GameObject.FindObjectOfType<PlayerBehavior>().AddGold(gold);
+			GameObject.Destroy(this.gameObject);
+		}
     }
+
+    public void Damage(int amount) {
+		current_life -= amount;
+
+		float health_ratio = current_life / (float)max_life;
+	
+		life_bar.localScale = new Vector3(health_ratio, 0.1f, 0f);
+		life_bar.GetComponent<SpriteRenderer>().color = Color.Lerp(Color.red, Color.green, health_ratio);
+	}
+
+    public bool IsDead() {
+		return current_life <= 0;
+	}
 }

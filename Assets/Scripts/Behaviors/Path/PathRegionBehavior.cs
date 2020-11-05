@@ -8,10 +8,8 @@ public class PathRegionBehavior : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col){
         EnemyBehavior enemy = col.gameObject.GetComponent<EnemyBehavior>();
-
         if(enemy == null)
             return;
-
         enemy.ChangeDirection(target_direction);
     }
 }

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dfa1b478a49144215a420b429cee14a0, type: 3}
-  m_Name: BasicTower
+  m_Name: Interimaire
   m_EditorClassIdentifier: 
   placed: 0
   range: 3
@@ -21,7 +21,7 @@ MonoBehaviour:
   base_color: {r: 1, g: 1, b: 1, a: 0.99215686}
   turret_sprite: {fileID: 21300000, guid: d13a543b9be305245a075107385fe99d, type: 3}
   base_sprite: {fileID: 21300000, guid: 408ffae450cda41a9872cfc16fc37420, type: 3}
-  turret_color: {r: 1, g: 1, b: 1, a: 0.6039216}
+  turret_color: {r: 1, g: 1, b: 1, a: 1}
   projectile: {fileID: 11400000, guid: fad905e9030bbd2d08677f9c8ff9fdb9, type: 2}
   projectile_template: {fileID: 4607051192518612407, guid: 505dbcae047ce1799b874b45016ed130, type: 3}
   freeze_rotation: 0
