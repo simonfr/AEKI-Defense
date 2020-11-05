@@ -29,7 +29,7 @@ public class TowerButtonBehavior : MonoBehaviour{
     {
 		if (mouse_in) {
 			Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            infos.transform.position = new Vector3(mousePosition.x, mousePosition.y, 0f);
+            infos.transform.position = new Vector3(mousePosition.x, mousePosition.y, 200f);
 		}
     }
     
@@ -53,7 +53,7 @@ public class TowerButtonBehavior : MonoBehaviour{
 
     public void OnPointerExit(){
         mouse_in=false;
-        infos.gameObject.SetActive(true);
+        infos.gameObject.SetActive(false);
     }
 
 
