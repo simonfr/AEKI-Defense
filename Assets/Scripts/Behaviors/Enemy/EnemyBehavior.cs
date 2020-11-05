@@ -16,7 +16,7 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] private Transform life_bar;
 
 
-    public void Init(Enemy enemy){
+    public void Init(EnemyStats enemy){
         transform.localScale = new Vector3(enemy.size, enemy.size, 1f);
 
         SpriteRenderer renderer = GetComponent<SpriteRenderer>();

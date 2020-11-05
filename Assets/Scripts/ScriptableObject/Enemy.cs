@@ -1,14 +1,12 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 [CreateAssetMenu]
 public class Enemy : ScriptableObject {
-    public int life;
-    public Sprite sprite;
-    public Color color;
-    public float size;
-    public float move_speed;
-    public int gold;
-    public int value;
+    
+    public EnemyStats enemy;
+    public EnemyBehavior enemy_template;
+
+    public int enemy_count;
+    public float enemy_interval;
 }

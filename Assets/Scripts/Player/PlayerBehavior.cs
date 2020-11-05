@@ -72,7 +72,7 @@ public class PlayerBehavior : MonoBehaviour
 					selected_tower.Place();
 					selected_tower = null;
 				} else {
-					// TODO: DISPLAY "NOT ENOUGH MONEY"
+					
 				}
 			}
 			if (Input.GetMouseButtonDown(1)) {
